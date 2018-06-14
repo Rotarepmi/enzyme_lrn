@@ -42,3 +42,23 @@ describe('list of users', () => {
     });
   });
 });
+
+it('App passes users to the UsersList', () => {
+  const users = ['Brajan', 'Dżesika', 'Karyna'];
+  const app = shallow(<App />);
+  app.setState({ filteredUsers: users });
+
+  expect(app.find('UsersList').prop('users')).toEqual(['Brajan', 'Dżesika', 'Karyna']);
+});
+
+describe('change props', () => {
+  const users = ['Brajan', 'Dżesika', 'Karyna'];
+  const usersList = shallow(<UsersList users={['Ktoś', 'Coś']} />);
+  usersList.setProps({ users });
+  
+  users.forEach(user => {
+    it(`includes name ${user} on the list`, () => {
+      expect(usersList.containsMatchingElement(<li>{user}</li>)).toEqual(true);
+    });
+  });
+});

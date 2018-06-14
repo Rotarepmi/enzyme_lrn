@@ -3,7 +3,7 @@ import UsersList from './UsersList';
 
 const users = ['Adam', 'Marcin', 'Dorota', 'Zenek', 'Jakub', 'Roksana', 'Lena'];
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
